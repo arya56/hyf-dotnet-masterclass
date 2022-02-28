@@ -1,42 +1,40 @@
 ﻿// See https://aka.ms/new-console-template for more information
-
-// int[] result = AddArray(splitArray);
-// WriteResult(result);
-
 int[] input = new[] { 1, 2, 5, 7, 2, 3, 5, 7 };
 int[][] splitArray = Split(input);
-
+AddArray(splitArray);
+int[] result = AddArray(splitArray);
+WriteResult(result);
 
 int[][] Split(int[] inputArray)
 {
-    int[] firstArray = new int[] { };
-    int[] secondArray = new int[] { };
+    //     if (inputArray.Length%2!=0){
+    //         int[][] result= new int [][]{};
+    //         Console.WriteLine(result.Length);
+    //             return new int[][] { };
+    //     }
+    int[] firstArray = new int[inputArray.Length / 2];
+    int[] secondArray = new int[inputArray.Length / 2];
+    Array.Copy(inputArray, firstArray, inputArray.Length / 2);
+    Array.Copy(inputArray, inputArray.Length / 2, secondArray, 0, inputArray.Length / 2);
+    return new int[][] { firstArray, secondArray };
+}
 
-    int[][] twoDimentionArray = new int[2][];
-    if (inputArray.Length % 2 == 0)
+int[] AddArray(int[][] twoArray)
+{
+    int[] result = new int[twoArray[0].Length];
+    Array.Copy(twoArray[0], result, twoArray[0].Length - 1);
+    for (var i = 0; i < twoArray[0].Length; i++)
     {
-        for (var i = 0; i < inputArray.Length / 2; i++)
-        {
-            Console.WriteLine(inputArray[i]);
-            firstArray[i] = inputArray[i];
-        }
-        for (var i = inputArray.Length / 2; i < inputArray.Length; i++)
-        {
-            secondArray[i] = inputArray[i];
-        }
-        twoDimentionArray[0] = firstArray;
-        twoDimentionArray[1] = secondArray;
-        foreach (var item in twoDimentionArray)
-        {
-            Console.WriteLine(item);
-        }
-        //firstArray = inputArray.Take(4).ToArray();
-        // secondArray=inputArray.Skip(inputArray.Length/2);
-        // return firstArray,secondArray;
+        result[i] += twoArray[1][i];
     }
-    else
+    return result;
+}
+
+void WriteResult(int[] result)
+{
+    foreach (int value in result)
     {
-        Console.WriteLine("Array lenght is not even");
+        Console.WriteLine(value);
     }
-    return twoDimentionArray;
+
 }
