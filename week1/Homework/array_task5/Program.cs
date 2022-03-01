@@ -1,17 +1,22 @@
 ﻿// See https://aka.ms/new-console-template for more information
 int[] input = new[] { 1, 2, 5, 7, 2, 3, 5, 7 };
-int[][] splitArray = Split(input);
-AddArray(splitArray);
-int[] result = AddArray(splitArray);
-WriteResult(result);
+if (input.Length % 2 != 0)
+{
+
+    Console.WriteLine("Array's length is not even");
+
+}
+else
+{
+    int[][] splitArray = Split(input);
+    AddArray(splitArray);
+    int[] result = AddArray(splitArray);
+    WriteResult(result);
+}
+
 
 int[][] Split(int[] inputArray)
 {
-    //     if (inputArray.Length%2!=0){
-    //         int[][] result= new int [][]{};
-    //         Console.WriteLine(result.Length);
-    //             return new int[][] { };
-    //     }
     int[] firstArray = new int[inputArray.Length / 2];
     int[] secondArray = new int[inputArray.Length / 2];
     Array.Copy(inputArray, firstArray, inputArray.Length / 2);
@@ -32,9 +37,6 @@ int[] AddArray(int[][] twoArray)
 
 void WriteResult(int[] result)
 {
-    foreach (int value in result)
-    {
-        Console.WriteLine(value);
-    }
+    Console.WriteLine("Sum of two array is: [{0}]", string.Join(", ", result));
 
 }
