@@ -37,6 +37,7 @@ int[] AddArray(int[][] twoArray)
 
 void WriteResult(int[] result)
 {
-    Console.WriteLine("Sum of two array is: [{0}]", string.Join(", ", result));
+    Console.WriteLine($"The following arrays: [{string.Join(", ", Split(input)[0])}] and [{string.Join(", ", Split(input)[1])}] Sum up in [{string.Join(", ", result)}]");
+
 
 }
