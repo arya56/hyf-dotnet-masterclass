@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 var time = new JupiterTime(2, 20);
-var timeIn2Hours = time.AddHours(17);
+var timeIn2Hours = time.AddHours(1);
 
 PrintTime(timeIn2Hours);
 
@@ -52,7 +52,7 @@ class JupiterTime
         {
             Hours %= 10;
         }
-        return this;
+        return new JupiterTime(hours, minutes);
 
     }
 }

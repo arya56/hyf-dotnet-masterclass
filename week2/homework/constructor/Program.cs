@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-var time = new JupiterTime(14, 88);
+var time = new JupiterTime(9, 88);
 PrintTime(time);
 
 
@@ -16,16 +16,16 @@ class JupiterTime
 
     public JupiterTime(int hours, int minutes)
     {
-        if (hours > 12)
-        {
-            hours %= 10;
-        }
+
         if (minutes > 60)
         {
             var extraHours = minutes / 60;
             minutes %= 60;
             hours += extraHours;
-
+        }
+        if (hours >= 10)
+        {
+            hours %= 10;
         }
         Hours = hours;
         Minutes = minutes;
